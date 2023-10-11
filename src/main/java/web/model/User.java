@@ -1,6 +1,7 @@
 package web.model;
 
 import org.jetbrains.annotations.NotNull;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +11,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
+@Component
 public class User {
+
     @Id
     @Column(name = "id")
     private long id;
@@ -22,6 +25,13 @@ public class User {
     @Column(name = "email")
     private String email;
 
+
+
+    public User(int id, String name, int age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    };
 
     public User(){};
     public long getId() {

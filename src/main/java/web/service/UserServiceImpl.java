@@ -15,6 +15,7 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
 
+    public UserServiceImpl(){};
     @Override
     public void addUser(User user) {
         userDao.addUser(user);
@@ -28,6 +29,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public int changeUser(int id) {
         return userDao.changeUser(id);
+    }
+
+    @Override
+    public User findUser(int id) {
+        return userDao.findUser(id);
     }
 
     @Override

@@ -11,6 +11,8 @@ public interface UserDao {
     void deleteUser(int id);
     int changeUser(int id);
 
+    User findUser(int id);
+
     List<User> showUsers();
 
 }

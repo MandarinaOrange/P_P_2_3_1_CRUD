@@ -9,5 +9,7 @@ public interface UserService {
     void deleteUser(int id);
     int changeUser(int id);
 
+    User findUser(int id);
+
     List<User> showUsers();
 }

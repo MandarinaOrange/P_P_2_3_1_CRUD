@@ -23,8 +23,8 @@ public class HelloController {
     }
 
     @GetMapping(value = "goodbye")
-    public String printGoodbye(@RequestParam("name") String name,
-                               @RequestParam("age") Integer age, Model model) {
+    public String printGoodbye(@RequestParam(value = "name", required = false) String name,
+                               @RequestParam(value = "age", required = false) Integer age, Model model) {
         model.addAttribute("age", age);
         System.out.println(name + " " + age);
         return "goodbye";
