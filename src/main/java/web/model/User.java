@@ -1,10 +1,24 @@
 package web.model;
 
+import org.jetbrains.annotations.NotNull;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "users")
 public class User {
+    @Id
+    @Column(name = "id")
     private long id;
+    @Column(name = "name")
+    @NotNull
     private String name;
+    @Column(name = "age")
     private int age;
+    @Column(name = "email")
     private String email;
 
 
@@ -42,9 +56,9 @@ public class User {
     }
 
 
-
-
-
-
+    @Override
+    public String toString() {
+        return this.name + " " + this.age + " " + this.id;
+    }
 
 }

@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import web.dao.UserDao;
 import web.model.User;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
@@ -21,5 +23,10 @@ public class UserServiceImpl implements UserService {
 
     public int changeUser(int id) {
         return userDao.changeUser(id);
+    }
+
+    @Override
+    public List<User> showUsers() {
+        return userDao.showUsers();
     }
 }
