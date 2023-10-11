@@ -1,8 +1,10 @@
 package web.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +20,14 @@ public class HelloController {
         messages.add("5.2.0 version by sep'19 ");
         model.addAttribute("messages", messages);
         return "hello";
+    }
+
+    @GetMapping(value = "goodbye")
+    public String printGoodbye(@RequestParam("name") String name,
+                               @RequestParam("age") Integer age, Model model) {
+        model.addAttribute("age", age);
+        System.out.println(name + " " + age);
+        return "goodbye";
     }
 
 

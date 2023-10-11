@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -59,6 +60,16 @@ public class User {
     @Override
     public String toString() {
         return this.name + " " + this.age + " " + this.id;
+    }
+
+    public static void printUsers(List<User> users) {
+        if (users == null) {
+            System.out.println("No any users");
+        } else {
+            for (User user : users) {
+                System.out.println(user);
+            }
+        }
     }
 
 }
