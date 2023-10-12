@@ -14,6 +14,7 @@ import web.service.UserService;
 public class UserController {
     @Autowired
     private UserService userService;
+    private User user;
 
     @GetMapping()
     public String printUsers(ModelMap model) {
@@ -28,7 +29,7 @@ public class UserController {
     @GetMapping({"/{id}"})
     public String printOnlyUser(@PathVariable("id") int id, Model model) {
         model.addAttribute("user", userService.findUser(id));
-        return "user";
+        return "findUser";
     }
 
     @GetMapping("/new")
@@ -37,7 +38,7 @@ public class UserController {
         return "addUser";
     }
 
-    @PostMapping()
+    @PostMapping("/new")
     public String addUser(@RequestParam("name") String name, @RequestParam("age") int age,
                           @RequestParam("email") String email, Model model) {
         User user = new User();
@@ -52,5 +53,41 @@ public class UserController {
 
         return "redirect:/users";
     }
+
+    @GetMapping("/delete")
+    public String deleteUser(Model model) {
+        model.addAttribute("user");
+        return "deleteUser";
+    }
+
+    @PostMapping("/delete")
+    public String deletedUser(@RequestParam("id") String id, Model model) {
+        userService.deleteUser(Integer.parseInt(id));
+        return "redirect:/users";
+    }
+
+    @GetMapping("/find")
+    public String findUser(Model model) {
+        model.addAttribute("user");
+        return "findUser";
+    }
+
+    @PostMapping ("/find")
+    public String foundUser(@RequestParam("id") String id, Model model) {
+        user = userService.findUser(Integer.parseInt(id));
+        if (user == null) return "redirect:/users";
+
+        System.out.println(user);
+
+        return"redirect:/users/found";
+    }
+
+    @GetMapping("/found")
+    public String showUser(Model model) {
+        model.addAttribute("user", user);
+        return "foundUser";
+    }
+
+
 
 }

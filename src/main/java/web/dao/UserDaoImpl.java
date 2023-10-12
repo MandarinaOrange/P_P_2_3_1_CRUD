@@ -10,8 +10,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static web.model.ListPeople.USERS;
+import static web.model.ListPeople.USSERS;
 
 
 @Repository
@@ -26,10 +28,6 @@ public class UserDaoImpl implements UserDao {
         USERS.add(user);
     }
 
-    @Override
-    public void deleteUser(int id) {
-
-    }
 
     @Override
     public int changeUser(int id) {
@@ -42,6 +40,11 @@ public class UserDaoImpl implements UserDao {
             if (user.getId() == id) return user;
         }
         return null;
+    }
+
+    @Override
+    public void deleteUser(int id) {
+        USERS = USERS.stream().filter(user -> user.getId() != id).collect(Collectors.toList());
     }
 
     @Override

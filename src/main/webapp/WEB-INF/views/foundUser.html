@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>foundUser</title>
+</head>
+<body>
+
+<span class="about-language" th:text="${user.getName}"> &nbsp &nbsp </span>
+<span class="about-language" th:text="${user.getAge()}">&nbsp &nbsp </span>
+<span class="about-language" th:text="${user.getEmail()}">&nbsp &nbsp </span>
+
+
+<br>
+
+<a href="http://localhost:8080/users">USERS</a>
+</body>
+</html>

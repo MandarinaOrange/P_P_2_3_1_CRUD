@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>user</title>
+</head>
+<body>
+<form th:method="post" th:action="@{/users/find}">
+    <label for="id">Id &nbsp &nbsp &nbsp</label>
+    <input name="id" type="text" required id="id"/>
+
+    <br> <br>
+
+    <input type="submit" value="Search">
+
+</form>
+</body>
+</html>
