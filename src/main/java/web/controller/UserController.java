@@ -4,10 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import web.model.ListPeople;
 import web.model.User;
 import web.service.UserService;
 
@@ -24,10 +22,35 @@ public class UserController {
         return "users";
     }
 
+
+
+
     @GetMapping({"/{id}"})
     public String printOnlyUser(@PathVariable("id") int id, Model model) {
         model.addAttribute("user", userService.findUser(id));
         return "user";
+    }
+
+    @GetMapping("/new")
+    public String newUser(Model model){
+        model.addAttribute("user");
+        return "addUser";
+    }
+
+    @PostMapping()
+    public String addUser(@RequestParam("name") String name, @RequestParam("age") int age,
+                          @RequestParam("email") String email, Model model) {
+        User user = new User();
+        user.setAge(age);
+        user.setName(name);
+        user.setEmail(email);
+        model.addAttribute(user);
+
+        userService.addUser(user);
+
+        User.printUsers(ListPeople.USERS);
+
+        return "redirect:/users";
     }
 
 }

@@ -3,6 +3,7 @@ package web.dao;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
+import web.model.ListPeople;
 import web.model.User;
 
 import javax.persistence.EntityManager;
@@ -22,6 +23,7 @@ public class UserDaoImpl implements UserDao {
     public void addUser(User user) {
         /*entityManager.persist(user);
         entityManager.flush();*/
+        USERS.add(user);
     }
 
     @Override

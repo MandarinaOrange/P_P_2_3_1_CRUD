@@ -1,10 +1,42 @@
 <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Users</title>
 </head>
 <body>
-<a href="/users/1">user1</a>
+<br> <br>
+<h1>List of users</h1>
+<br> <br>
+<table>
+    <tr>
+        <th>NAME</th>
+        <th>AGE</th>
+        <th>EMAIL</th>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.getName()}"></td>
+        <td th:text="${user.getAge()}"></td>
+        <td th:text="${user.getEmail()}"></td>
+    </tr>
+</table>
+
+<br> <br>
+
+<var th:name="act" content="search"/>
+
+<form id="but1" action="/users/new">
+    <button act="1">New</button>
+</form>
+
+<form id="but2" action="/users/delete">
+    <button act="2">Delete</button>
+</form>
+
+<form id="but3" action="/users/search">
+    <button act="3">Search</button>
+</form>
+
 </body>
 </html>
