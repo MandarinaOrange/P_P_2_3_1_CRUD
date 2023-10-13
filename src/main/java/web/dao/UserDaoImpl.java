@@ -1,31 +1,35 @@
 package web.dao;
 
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
-import web.model.ListPeople;
 import web.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static web.config.DBConfig.*;
 import static web.model.ListPeople.USERS;
-import static web.model.ListPeople.USSERS;
 
 
 @Repository
 public class UserDaoImpl implements UserDao {
 
-/*    @PersistenceContext
-    private EntityManager entityManager;*/
+
+
+    @PersistenceContext
+    private EntityManager entityManager;
+
     @Override
     public void addUser(User user) {
-        /*entityManager.persist(user);
-        entityManager.flush();*/
-        USERS.add(user);
+        //USERS.add(user);
+        entityManager.persist(user);
+        entityManager.flush();
     }
 
 
@@ -50,9 +54,8 @@ public class UserDaoImpl implements UserDao {
     @Override
     @SuppressWarnings("unckecked")
     public List<User> showUsers() {
-        //TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User ");
-        //return query.getResultList();
-        return USERS;
+        return entityManager.createQuery("from User ", User.class).getResultList();
+        //return USERS;
 
     }
 }

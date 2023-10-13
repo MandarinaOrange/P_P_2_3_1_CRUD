@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form th:method="post" th:action="@{/users/new}">
+  <label for="name">Name&nbsp&nbsp&nbsp</label>
+  <input name="name" type="text" required id="name"/>
+
+  <br>
+
+  <label for="age">Age&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+  <input name="age" type="number" required id="age"/>
+
+  <br>
+
+  <label for="email">Email&nbsp&nbsp&nbsp</label>
+  <input name="email" type="email" required id="email"/>
+
+  <br> <br>
+
+  <input type="submit" value="Add User">
+
+</form>
+
+
+
+</body>
+</html>
