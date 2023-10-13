@@ -3,20 +3,17 @@ package web.model;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users", schema = "mvc-users")
 @Component
 public class User {
 
     @Id
-    @Column(name = "id")
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     @Column(name = "name")
     @NotNull
     private String name;
@@ -27,18 +24,18 @@ public class User {
 
 
 
-    public User(int id, String name, int age) {
-        this.id = id;
+    public User(String name, int age) {
+        //this.id = ListPeople.userCount;
         this.name = name;
         this.age = age;
     };
 
     public User(){};
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -19,7 +19,6 @@ public class UserController {
     @GetMapping()
     public String printUsers(ModelMap model) {
         model.addAttribute("users", userService.showUsers());
-        System.out.println("USERS");
         return "users";
     }
 
@@ -49,7 +48,6 @@ public class UserController {
 
         userService.addUser(user);
 
-        User.printUsers(ListPeople.USERS);
 
         return "redirect:/users";
     }
@@ -76,8 +74,6 @@ public class UserController {
     public String foundUser(@RequestParam("id") String id, Model model) {
         user = userService.findUser(Integer.parseInt(id));
         if (user == null) return "redirect:/users";
-
-        System.out.println(user);
 
         return"redirect:/users/found";
     }
