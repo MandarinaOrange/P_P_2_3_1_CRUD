@@ -86,8 +86,18 @@ public class UserController {
 
     @PostMapping("/found")
     public String updateUser(Model model, @RequestParam("name") String name, @RequestParam("age") int age,
-                             @RequestParam("email") String email, @RequestParam("id") int id) {
-        userService.changeUser(id);
+                             @RequestParam("email") String email) {
+        //userService.changeUser(id);
+        //System.out.println(user.getId());
+
+        user.setAge(age);
+        user.setName(name);
+        user.setEmail(email);
+        model.addAttribute(user);
+        System.out.println(user);
+
+        userService.changeUser(user);
+
         return "redirect:/users";
     }
 

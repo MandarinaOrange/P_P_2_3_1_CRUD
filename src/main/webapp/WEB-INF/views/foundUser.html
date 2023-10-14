@@ -7,7 +7,7 @@
 
     <style>
         .dropdownbtn {
-            background-color: black;
+            background-color: darkblue;
             color: white;
             padding: 12px;
             font-size: 12px;
@@ -19,7 +19,7 @@
         .dropdownlist-content {
             display: none;
             position: absolute;
-            background-color: greenyellow;
+            background-color: lightseagreen;
             min-width: 120px;
             z-index: 1;
         }
@@ -30,7 +30,18 @@
         }
         .dropdownlist-content a:hover {background-color: lightcyan;}
         .dropdowndemo:hover .dropdownlist-content {display: block;}
-        .dropdowndemo:hover .dropdownbtn {background-color: blue;}
+        .dropdowndemo:hover .dropdownbtn {background-color: steelblue;}
+
+        .dropdownbusers {
+            background-color: darkblue;
+            color: white;
+            padding: 12px;
+            font-size: 12px;
+        }
+        .dropdownbusers a {color: cornsilk;}
+        .dropdownbusers:hover  {--copy-button-background-color-active: powderblue;}
+
+
     </style>
 
 
@@ -47,22 +58,26 @@
 
 <div class="dropdowndemo">
     <button class="dropdownbtn">Change</button>
-    <div class="dropdownlist-content">
+    <form th:method="post" class="dropdownlist-content" th:action="@{/users/found}">
         <label for="name">Name&nbsp&nbsp&nbsp</label>
-        <input name="name" type="text" required id="name"/>
+        <input name="name" th:value="${user.getName()}" type="text" id="name"/>
 
         <label for="age">Age&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-        <input name="age" type="number" max="100" min="14" required id="age"/>
+        <input name="age" th:value="${user.getAge()}" type="number" max="100" min="14" id="age"/>
 
         <label for="email">Email&nbsp&nbsp&nbsp</label>
-        <input name="email" type="email" id="email"/>
+        <input name="email" th:value="${user.getEmail()}" type="email" id="email"/>
 
         <input type="submit" value="Ok">
-    </div>
+    </form>
 </div>
 
-<br><br>
+<br><br> <br><br> <br><br>
 
-<a href="http://localhost:8080/users">USERS</a>
+<div class="dropdownbusers">
+    <a href="http://localhost:8080/users" >USERS</a>
+</div>
+
 </body>
+
 </html>
