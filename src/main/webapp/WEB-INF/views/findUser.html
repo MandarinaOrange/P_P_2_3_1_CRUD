@@ -7,7 +7,7 @@
 <body>
 <form th:method="post" th:action="@{/users/find}">
     <label for="id">Id &nbsp &nbsp &nbsp</label>
-    <input name="id" type="text" required id="id"/>
+    <input name="id" type="text" pattern="[0-9]{1,}" required id="id"/>
 
     <br> <br>
 
