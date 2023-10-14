@@ -10,9 +10,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+
 import java.util.Properties;
 
 
@@ -22,35 +20,6 @@ import java.util.Properties;
 @PropertySource("classpath:db.properties")
 public class DBConfig {
     private Environment env;
-
-   /* private static final String URL = "jdbc:mysql://localhost:3306/mvc-users";
-    private static final String USER = "root";
-    private static final String PASSWORD = "root";
-
-    public static Connection connection;
-
-    static {
-        try {
-            //registering the jdbc driver here, your string to use
-            //here depends on what driver you are using.
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("CLASS NOT FOUND");
-        }
-    }
-
-    static {
-        try {
-            connection = DriverManager.getConnection(URL, USER, PASSWORD);
-            System.out.println("Connected successfully");
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("Disconnected");
-        }
-    }
-*/
-
 
     @Autowired
     public DBConfig(Environment env){

@@ -25,12 +25,12 @@ public class User {
 
 
     public User(String name, int age) {
-        //this.id = ListPeople.userCount;
         this.name = name;
         this.age = age;
-    };
+    }
 
-    public User(){};
+    public User(){}
+
     public int getId() {
         return id;
     }

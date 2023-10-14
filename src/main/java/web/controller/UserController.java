@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import web.model.ListPeople;
 import web.model.User;
 import web.service.UserService;
 
@@ -40,13 +39,13 @@ public class UserController {
     @PostMapping("/new")
     public String addUser(@RequestParam("name") String name, @RequestParam("age") int age,
                           @RequestParam("email") String email, Model model) {
-        User user = new User();
-        user.setAge(age);
-        user.setName(name);
-        user.setEmail(email);
-        model.addAttribute(user);
+        User user1 = new User();
+        user1.setAge(age);
+        user1.setName(name);
+        user1.setEmail(email);
+        model.addAttribute(user1);
 
-        userService.addUser(user);
+        userService.addUser(user1);
 
 
         return "redirect:/users";
@@ -87,8 +86,6 @@ public class UserController {
     @PostMapping("/found")
     public String updateUser(Model model, @RequestParam("name") String name, @RequestParam("age") int age,
                              @RequestParam("email") String email) {
-        //userService.changeUser(id);
-        //System.out.println(user.getId());
 
         user.setAge(age);
         user.setName(name);

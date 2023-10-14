@@ -7,15 +7,8 @@ import web.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.List;
-import java.util.stream.Collectors;
 
-import static web.config.DBConfig.*;
-//import static web.model.ListPeople.USERS;
+import java.util.List;
 
 
 @Repository
