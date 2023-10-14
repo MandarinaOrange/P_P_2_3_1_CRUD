@@ -4,15 +4,64 @@
 <head>
     <meta charset="UTF-8">
     <title>foundUser</title>
+
+    <style>
+        .dropdownbtn {
+            background-color: black;
+            color: white;
+            padding: 12px;
+            font-size: 12px;
+        }
+        .dropdowndemo{
+            position:fixed;
+            display: block;
+        }
+        .dropdownlist-content {
+            display: none;
+            position: absolute;
+            background-color: greenyellow;
+            min-width: 120px;
+            z-index: 1;
+        }
+        .dropdownlist-content a {
+            color: darkblue;
+            padding: 14px 18px;
+            display: block;
+        }
+        .dropdownlist-content a:hover {background-color: lightcyan;}
+        .dropdowndemo:hover .dropdownlist-content {display: block;}
+        .dropdowndemo:hover .dropdownbtn {background-color: blue;}
+    </style>
+
+
 </head>
 <body>
+
+<br><br>
 
 <span class="about-language" th:text="${user.getName}"> &nbsp &nbsp </span>
 <span class="about-language" th:text="${user.getAge()}">&nbsp &nbsp </span>
 <span class="about-language" th:text="${user.getEmail()}">&nbsp &nbsp </span>
 
+<br><br>
 
-<br>
+<div class="dropdowndemo">
+    <button class="dropdownbtn">Change</button>
+    <div class="dropdownlist-content">
+        <label for="name">Name&nbsp&nbsp&nbsp</label>
+        <input name="name" type="text" required id="name"/>
+
+        <label for="age">Age&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+        <input name="age" type="number" max="100" min="14" required id="age"/>
+
+        <label for="email">Email&nbsp&nbsp&nbsp</label>
+        <input name="email" type="email" id="email"/>
+
+        <input type="submit" value="Ok">
+    </div>
+</div>
+
+<br><br>
 
 <a href="http://localhost:8080/users">USERS</a>
 </body>

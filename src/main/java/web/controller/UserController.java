@@ -84,6 +84,13 @@ public class UserController {
         return "foundUser";
     }
 
+    @PostMapping("/found")
+    public String updateUser(Model model, @RequestParam("name") String name, @RequestParam("age") int age,
+                             @RequestParam("email") String email, @RequestParam("id") int id) {
+        userService.changeUser(id);
+        return "redirect:/users";
+    }
+
 
 
 }
