@@ -75,9 +75,11 @@ public class UserController {
 
     @PostMapping ("/find")
     public String foundUser(@RequestParam("id") String id, Model model) {
-        user = userService.findUser(Integer.parseInt(id));
-        if (user == null) return "redirect:/users";
 
+        if (!userService.existUser(Integer.parseInt(id))) return "redirect:/users";
+
+        user = userService.findUser(Integer.parseInt(id)).get();
+        System.out.println(user);
         return"redirect:/users/found";
     }
 
