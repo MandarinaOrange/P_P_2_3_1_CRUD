@@ -1,9 +1,11 @@
 package web.model;
 
-import org.jetbrains.annotations.NotNull;
+
+import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.*;
+
 import java.util.List;
 
 @Entity
