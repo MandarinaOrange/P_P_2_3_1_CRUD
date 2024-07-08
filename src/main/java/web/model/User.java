@@ -10,7 +10,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "users", schema = "mvc-users")
-@Component
 public class User {
 
     @Id
