@@ -13,7 +13,7 @@ import web.service.UserServiceImpl;
 @RequestMapping("/users")
 public class UserController {
     @Autowired
-    private UserService userService = new UserServiceImpl();
+    private UserService userService;
     private User user;
 
     @GetMapping()
