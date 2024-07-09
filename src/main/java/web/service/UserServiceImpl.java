@@ -19,7 +19,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     public UserServiceImpl(UserDao userDao) {
         this.userDao = userDao;
-    }    @Override
+    }
+
+    @Override
     public void addUser(User user) {
         userDao.addUser(user);
     }
